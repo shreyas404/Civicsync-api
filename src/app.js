@@ -4,14 +4,7 @@ import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, increment
 import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 // --- Firebase Configuration ---
-const firebaseConfig = typeof _firebase_config !== 'undefined' ? JSON.parse(_firebase_config) : {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
+const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASE_CONFIG);
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
